@@ -2,12 +2,15 @@
 
 const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
+const navbarToggleBtn = document.querySelector(".navbar__toggle-btn");
 
 document.addEventListener("scroll", () => {
   if (window.scrollY > navbarHeight) {
     navbar.classList.add("navbar--dark");
+    navbarToggleBtn.classList.add("btn--move");
   } else {
     navbar.classList.remove("navbar--dark");
+    navbarToggleBtn.classList.remove("btn--move");
   }
 });
 
@@ -20,7 +23,13 @@ navbarMenu.addEventListener("click", (event) => {
   if (link == null) {
     return;
   }
+  navbarMenu.classList.remove("open");
   scrollIntoView(link);
+});
+
+// Navbar toggle button
+navbarToggleBtn.addEventListener("click", () => {
+  navbarMenu.classList.toggle("open");
 });
 
 // Handle click on "contact me" button

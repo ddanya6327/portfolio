@@ -356,7 +356,7 @@ p {
 .category__btn.selected .category__count,
 .category__btn:hover .category__count {
   opacity: 1;
-  top: 0;
+  top: 4px;
 }
 .category__count {
   background-color: var(--color-orange);

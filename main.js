@@ -6,10 +6,10 @@ const navbarToggleBtn = document.querySelector(".navbar__toggle-btn");
 
 document.addEventListener("scroll", () => {
   if (window.scrollY > navbarHeight) {
-    navbar.classList.add("navbar--dark");
+    navbar.classList.add("navbar--float");
     navbarToggleBtn.classList.add("btn--move");
   } else {
-    navbar.classList.remove("navbar--dark");
+    navbar.classList.remove("navbar--float");
     navbarToggleBtn.classList.remove("btn--move");
   }
 });
@@ -39,10 +39,12 @@ homeContactBtn.addEventListener("click", () => {
 });
 
 // make home slowly fade
-const home = document.querySelector(".home__container");
+const home = document.querySelector("#home");
+const homeContainer = document.querySelector(".home__container");
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener("scroll", () => {
-  home.style.opacity = 0.9 - window.scrollY / homeHeight;
+  console.log(homeHeight)
+  homeContainer.style.opacity = 1 - (window.scrollY*1.3) / homeHeight;
 });
 
 // show "arrow uy" button

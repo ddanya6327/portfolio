@@ -337,12 +337,14 @@ p {
 .skillset__confident,
 .skillset__used {
   transform: translateX(-120%);
+  opacity: 0;
 }
 
 #skills .section__container h1.animated,
 .skillset__confident.animated,
 .skillset__used.animated {
   transform: translateX(0);
+  opacity: 1;
   transition: all 1300ms ease;
 }
 
@@ -458,12 +460,14 @@ p {
 #work .section__container h1,
 .work__categories,
 .work__projects {
+  opacity: 0;
   transform: translateX(120%);
 }
 
 #work .section__container h1.animated,
 .work__categories.animated,
 .work__projects.animated {
+  opacity: 1;
   transform: translateX(0);
   transition: all 1300ms ease;
 }

@@ -116,6 +116,7 @@ p {
 
 .navbar__menu {
   display: flex;
+  margin: 8px;
 }
 
 .navbar__menu.open {
@@ -206,6 +207,18 @@ p {
 .section__container {
   max-width: 1200px;
   margin: auto;
+  transition: all 800ms ease-in;
+}
+
+/* About */
+#about .section__container {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+#about .section__container.animated {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .about__avatar {
@@ -225,18 +238,11 @@ p {
 .skillset {
   display: flex;
   flex-direction: column;
-  /*background-color: var(--color-light-grey);*/
-  /*color: var(--color-white);*/
   margin: 20px 0;
-}
-
-.skillset__title {
-  /*color: var(--black);*/
 }
 
 .skillset__confident {
   flex-basis: 100%;
-  /*background-color: var(--color-dark-grey);*/
   padding: 20px 40px;
 }
 
@@ -256,9 +262,10 @@ p {
 }
 
 .skill__value {
-  width: 90%;
+  width: 0;
   height: 10px;
   background-color: mediumslateblue;
+  transition: ease-out 1000ms;
 }
 
 .skillset__used {
@@ -289,7 +296,7 @@ p {
   opacity: 0;
   transition: all var(--animation-duration) ease-in;
   margin: 10px;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   color: var(--color-light-white);
   font-size: 12px;
 }
@@ -323,6 +330,20 @@ p {
   background-color: var(--color-white);
   padding: 3px;
   margin: 10px;
+}
+
+/* skills animation */
+#skills .section__container h1,
+.skillset__confident,
+.skillset__used {
+  transform: translateX(-120%);
+}
+
+#skills .section__container h1.animated,
+.skillset__confident.animated,
+.skillset__used.animated {
+  transform: translateX(0);
+  transition: all 1300ms ease;
 }
 
 /* Work */
@@ -433,6 +454,20 @@ p {
   background-color: var(--color-dark-white);
 }
 
+/* work animation */
+#work .section__container h1,
+.work__categories,
+.work__projects {
+  transform: translateX(120%);
+}
+
+#work .section__container h1.animated,
+.work__categories.animated,
+.work__projects.animated {
+  transform: translateX(0);
+  transition: all 1300ms ease;
+}
+
 /* Contact */
 #contact {
   background-color: var(--color-black);
@@ -522,16 +557,6 @@ p {
   .section {
     padding: 16px;
     padding-top: 40px;
-  }
-
-  .about__majors {
-    flex-direction: column;
-    margin-top: 30px;
-    margin-bottom: 0;
-  }
-
-  .major {
-    margin-bottom: 30px;
   }
 
   .skillset {

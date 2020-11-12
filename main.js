@@ -15,7 +15,6 @@ document.addEventListener("scroll", () => {
 });
 
 // Handle scrolling
-
 const navbarMenu = document.querySelector(".navbar__menu");
 navbarMenu.addEventListener("click", (event) => {
   const target = event.target;
@@ -43,8 +42,68 @@ const home = document.querySelector("#home");
 const homeContainer = document.querySelector(".home__container");
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener("scroll", () => {
-  console.log(homeHeight)
-  homeContainer.style.opacity = 1 - (window.scrollY*1.3) / homeHeight;
+  homeContainer.style.opacity = 1 - (window.scrollY * 1.3) / homeHeight;
+});
+
+// Handle scroll animation
+
+// about
+const aboutSection = document.querySelector(".section__container");
+const aboutHeight = aboutSection.getBoundingClientRect().height;
+
+// skills
+const skillsSection = document.querySelector("#skills").firstElementChild;
+const skillsHeight = skillsSection.getBoundingClientRect().height;
+const skillsTitle = skillsSection.firstElementChild;
+const skillsetConfident = skillsSection.lastElementChild.firstElementChild;
+const skillsetUsed = skillsSection.lastElementChild.lastElementChild;
+let skillValueSwitch = true;
+
+// projects
+const workSection = document.querySelector("#work").firstElementChild;
+const workTitle = workSection.querySelector("h1");
+const workCategory = workSection.querySelector(".work__categories");
+const workProject = workSection.querySelector(".work__projects");
+
+document.addEventListener("scroll", () => {
+  // about
+  if (window.scrollY > homeHeight / 3) {
+    aboutSection.classList.add("animated");
+  }
+
+  // skill
+  if (window.scrollY > homeHeight - aboutHeight / 3) {
+    skillsTitle.classList.add("animated");
+  }
+  if (window.scrollY > homeHeight) {
+    skillsetConfident.classList.add("animated");
+    if (skillValueSwitch) {
+      const skillValues = document.querySelectorAll(".skill__value");
+      setTimeout(() => {
+        skillValues.forEach((node, index) => {
+          setTimeout(() => {
+            node.style.width = `${node.dataset.point}%`;
+          }, 100 * index);
+        });
+      }, 1200);
+    }
+    skillValueSwitch = false;
+  }
+
+  if (window.scrollY > homeHeight + aboutHeight) {
+    skillsetUsed.classList.add("animated");
+  }
+
+  // work
+  if (window.scrollY > homeHeight + aboutHeight + skillsHeight / 3) {
+    workTitle.classList.add("animated");
+  }
+  if (window.scrollY > homeHeight + aboutHeight + skillsHeight / 1.5) {
+    workCategory.classList.add("animated");
+    setTimeout(() => {
+      workProject.classList.add("animated");
+    }, 300);
+  }
 });
 
 // show "arrow uy" button

@@ -53,10 +53,10 @@ const aboutHeight = aboutSection.getBoundingClientRect().height;
 
 // skills
 const skillsSection = document.querySelector("#skills").firstElementChild;
-const skillsHeight = skillsSection.getBoundingClientRect().height;
 const skillsTitle = skillsSection.firstElementChild;
 const skillsetConfident = skillsSection.lastElementChild.firstElementChild;
 const skillsetUsed = skillsSection.lastElementChild.lastElementChild;
+let skillsHeight = skillsSection.getBoundingClientRect().height;
 let skillValueSwitch = true;
 
 // projects
@@ -92,6 +92,11 @@ document.addEventListener("scroll", () => {
 
   if (window.scrollY > homeHeight + aboutHeight) {
     skillsetUsed.classList.add("animated");
+  }
+
+  // measure again if size is greater than 2000
+  if (skillsHeight > 2000) {
+    skillsHeight = skillsSection.getBoundingClientRect().height - 200;
   }
 
   // work

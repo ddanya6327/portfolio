@@ -66,16 +66,19 @@ const workCategory = workSection.querySelector(".work__categories");
 const workProject = workSection.querySelector(".work__projects");
 
 document.addEventListener("scroll", () => {
+  // homeHeight limit is 1600
+  let mainHeight = homeHeight > 1600 ? 1600 : homeHeight;
+
   // about
-  if (window.scrollY > homeHeight / 3) {
+  if (window.scrollY > mainHeight / 3) {
     aboutSection.classList.add("animated");
   }
 
   // skill
-  if (window.scrollY > homeHeight - aboutHeight / 3) {
+  if (window.scrollY > mainHeight - aboutHeight / 3) {
     skillsTitle.classList.add("animated");
   }
-  if (window.scrollY > homeHeight) {
+  if (window.scrollY > mainHeight) {
     skillsetConfident.classList.add("animated");
     if (skillValueSwitch) {
       const skillValues = document.querySelectorAll(".skill__value");
@@ -90,7 +93,7 @@ document.addEventListener("scroll", () => {
     skillValueSwitch = false;
   }
 
-  if (window.scrollY > homeHeight + aboutHeight) {
+  if (window.scrollY > mainHeight + aboutHeight) {
     skillsetUsed.classList.add("animated");
   }
 
@@ -100,10 +103,10 @@ document.addEventListener("scroll", () => {
   }
 
   // work
-  if (window.scrollY > homeHeight + aboutHeight + skillsHeight / 3) {
+  if (window.scrollY > mainHeight + aboutHeight + skillsHeight / 3) {
     workTitle.classList.add("animated");
   }
-  if (window.scrollY > homeHeight + aboutHeight + skillsHeight / 1.5) {
+  if (window.scrollY > mainHeight + aboutHeight + skillsHeight / 1.5) {
     workCategory.classList.add("animated");
     setTimeout(() => {
       workProject.classList.add("animated");

@@ -475,7 +475,7 @@ p {
 .work__categories,
 .work__projects {
   opacity: 0;
-  transform: translateX(120%);
+  transform: translateX(-120%);
 }
 
 #work .section__container h1.animated,
